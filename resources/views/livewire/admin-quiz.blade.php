@@ -38,7 +38,7 @@
                 <a href="{{ route('admin.question.create', $quiz->id) }}">
                     <div
                         class="mt-3 text-center text-blue-700 py-2 px-2 border border-blue-500 rounded hover:text-white hover:bg-blue-700  ">
-                        Make Question
+                        Questions
                     </div>
                 </a>
                 <a href="{{ route('admin.quiz.edit', $quiz->id) }}">
@@ -47,9 +47,8 @@
                         Edit Quiz
                     </div>
                 </a>
-                <button wire:click="deleteQuiz({{ $quiz->id }})"
-                    class="mt-3 text-center text-red-600 py-2 px-2 border border-red-500 rounded hover:text-white hover:bg-red-500 w-full "
-                    onclick="return confirm('Are you sure you want to delete this quiz?');">Delete</button>
+                <button wire:click="deleteQuiz({{ $quiz->id }})" wire:confirm="are you sure delete  {{ $quiz->title }}?"
+                    class="mt-3 text-center text-red-600 py-2 px-2 border border-red-500 rounded hover:text-white hover:bg-red-500 w-full ">Delete</button>
 
             </div>
 

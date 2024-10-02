@@ -41,7 +41,11 @@ class MediumQuiz extends Component
         $this->number_of_questions = min($quiz->number_of_questions, $quiz->questions->count());
 
         // Acak dan ambil sejumlah pertanyaan sesuai dengan $this->number_of_questions
-        $this->questions = $quiz->questions->shuffle()->take($this->number_of_questions);
+        // $this->questions = $quiz->questions->shuffle()->take($this->number_of_questions);
+        $this->questions = $quiz->questions()
+            ->inRandomOrder()  // Acak langsung di level query
+            ->take($this->number_of_questions)  // Ambil sejumlah pertanyaan
+            ->get();
 
         $this->timeRemaining = $quiz->time; // Set waktu tersisa
     }

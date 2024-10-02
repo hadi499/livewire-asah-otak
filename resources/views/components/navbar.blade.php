@@ -96,8 +96,7 @@
           @else
           <a href="{{ route('login') }}"
             class="text-gray-800 dark:text-white hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('login') ? 'border-b-2 border-blue-500' : '' }}">Login</a>
-          <a href="{{ route('register') }}"
-            class="text-gray-800 dark:text-white hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('register') ? 'border-b-2 border-blue-500' : '' }}">Register</a>
+
           @endauth
         </div>
 

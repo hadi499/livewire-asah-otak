@@ -4,7 +4,7 @@ namespace App\Livewire;
 
 use App\Models\User;
 use Livewire\Component;
-use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Layout;
 use Illuminate\Support\Facades\Hash;
 
 class CreateUser extends Component
@@ -21,7 +21,7 @@ class CreateUser extends Component
         'email' => 'required|string|email|max:255|unique:users,email',
         'password' => 'required|string|min:3',
         'password_confirmation' => 'required|same:password',
-        'role' => 'required',
+        'role' => 'required|in:staff,admin',
 
     ];
 
@@ -37,11 +37,10 @@ class CreateUser extends Component
 
         ]);
 
-        Auth::login($user);
-
-        session()->flash('message', 'User registered successfully!');
-        return redirect()->route('home');
+        session()->flash('success', 'User registered successfully!');
+        return redirect()->route('admin.users');
     }
+    #[Layout('components.layouts.admin-app')]
     public function render()
     {
         return view('livewire.create-user');

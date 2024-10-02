@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Question;
 use App\Models\Quiz;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
@@ -14,6 +15,8 @@ class AdminQuizCreate extends Component
     public $number_of_questions;
     public $level;
 
+
+
     protected $rules = [
         'title' => 'required|string|max:255',
         'topic' => 'required|string|max:255',
@@ -21,6 +24,7 @@ class AdminQuizCreate extends Component
         'number_of_questions' => 'required|integer',
         'level' => 'required|string|max:255',
     ];
+
 
     public function store()
     {

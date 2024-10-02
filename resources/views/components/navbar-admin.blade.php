@@ -10,9 +10,8 @@
           </a>
           <div class="hidden md:flex md:items-center md:ml-6 md:gap-3">
             @auth
-            <a wire:navigate href="{{ route('home') }}"
-              class="text-blue-800 px-3 py-2 rounded-md text-sm font-medium underline underline-offset-2 {{ request()->routeIs('home') ? 'border-b-2 border-blue-500' : '' }}">View
-              site</a>
+            <a wire:navigate href="{{ route('admin') }}"
+              class="text-blue-800 px-3 py-2 rounded-md text-sm font-medium  {{ request()->routeIs('admin') ? 'border-b-2 border-blue-500' : '' }}">Dashboard</a>
 
 
 
@@ -32,6 +31,10 @@
 
 
             @auth
+            <a wire:navigate href="{{ route('home') }}"
+              class="text-blue-800 px-3 py-2 rounded-md text-sm font-medium underline underline-offset-2 {{ request()->routeIs('home') ? 'border-b-2 border-blue-500' : '' }}">View
+              site</a>
+
 
             <div x-data="{
             open: false,
@@ -127,8 +130,9 @@
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-gray-500">
 
 
-        <a href="{{ route('home') }}"
-          class="block hover:bg-blue-200 text-left px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('home') ? ' text-blue-800' : '' }}">Home</a>
+        <a wire:navigate href="{{ route('home') }}"
+          class="text-blue-800 px-3 py-2 rounded-md text-sm font-medium underline underline-offset-2 {{ request()->routeIs('home') ? 'border-b-2 border-blue-500' : '' }}">View
+          site</a>
         <form action="{{ route('logout') }}" method="POST" class="block w-full">
           @csrf
           <button type="submit"

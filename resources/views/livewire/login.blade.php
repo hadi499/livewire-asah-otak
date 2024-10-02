@@ -1,5 +1,6 @@
-<div class="max-w-md mx-auto mt-10">
-    <form wire:submit.prevent="login" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 border">
+<div class="max-w-md mx-auto mt-5 p-2">
+    <img src="{{asset('images/sinau-blue.png')}}" alt="">
+    <form wire:submit.prevent="login" class="bg-white shadow-md rounded px-8 mt-7 pt-6 pb-8 mb-4 border">
         <h2 class="text-2xl text-center font-semibold mb-4">Login</h2>
 
         @if (session()->has('message'))
@@ -65,8 +66,6 @@
                 </svg>
             </button>
         </div>
-        <div class="text-sm text-thin mt-4 space-x-2 ">
-            <span>Not member?</span> <a href="/register" class="text-blue-600">Register</a>
-        </div>
+
     </form>
 </div>
