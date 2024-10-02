@@ -3,17 +3,16 @@
         <div class="w-[300px]">
 
 
-            <a href="{{route('admin.quiz')}}">
+            <a wire:navigate href="{{route('quiz.easy')}}">
                 <div
                     class="border border-blue-700 hover:bg-blue-700 hover:text-white  px-2 py-2 shadow-lg rounded-sm text-blue-700 text-sm text-center  font-semibold mb-4">
-
-                    Quiz
+                    Easy
                 </div>
             </a>
-            <a href="{{route('admin.score')}}">
+            <a wire:navigate href="{{route('quiz.medium')}}">
                 <div
                     class="border border-blue-700 hover:bg-blue-700 hover:text-white  px-2 py-2 shadow-lg rounded-sm text-blue-700 text-sm text-center  font-semibold mb-4">
-                    Score
+                    Medium
                 </div>
             </a>
 

@@ -1,9 +1,6 @@
-<div class="max-w-3xl mx-auto px-2 mt-6">
+<div class="max-w-4xl mx-auto px-2  mt-6">
 
-
-    <h1 class="text-xl font-bold mb-6 mt-3 text-center">{{ $title }}</h1>
-
-    <!-- Timer -->
+    <h1 class="text-xl font-bold mb-6 text-center">{{ $title }}</h1>
 
 
     @if (!$quiz)
@@ -28,7 +25,7 @@
             </div>
             <button
                 class="mt-3 text-center text-blue-700 py-2 px-2 border border-blue-500 rounded hover:text-white hover:bg-blue-700 w-56"
-                wire:click="startEasy({{ $quiz->id }})">
+                wire:click="startMedium({{ $quiz->id }})">
                 Start Game
             </button>
         </div>
@@ -45,7 +42,6 @@
 
 
 
-
     <div id="timer" class="fixed top-[80px] right-[0px] lg:right-[150px]  w-24 text-xl font-semibold text-red-600 "
         wire:ignore x-data="{ timeRemaining: @entangle('timeRemaining'), interval: null }" x-init="
             interval = setInterval(() => {
@@ -53,12 +49,12 @@
                     timeRemaining--;
                 } else {
                     clearInterval(interval);
-                    $wire.call('submitEasy'); 
+                    $wire.call('submitMedium'); 
                 }
             }, 1000);
         " x-text="Math.floor(timeRemaining / 60) + ':' + ('0' + (timeRemaining % 60)).slice(-2)">
     </div>
-    <form wire:submit.prevent="submitEasy" class="border p-4">
+    <form wire:submit.prevent="submitMedium" class="border p-4">
         <div class="flex justify-evenly gap-2 flex-wrap">
             @foreach($questions as $question)
             <div class="w-[200px] border">
@@ -82,7 +78,7 @@
         </div>
         <div class="flex justify-between mt-6">
             <div>
-                <a wire:navigate href="{{route('quiz.easy')}}" class="text-slate-600 text-center text-sm font-semibold py-1 px-2 border border-slate-500 rounded-sm
+                <a wire:navigate href="{{route('quiz.medium')}}" class="text-slate-600 text-center text-sm font-semibold py-1 px-2 border border-slate-500 rounded-sm
                 hover:bg-slate-800 hover:text-white">
 
                     Back
@@ -103,7 +99,7 @@
     @if ($score > 0 || count($incorrectQuestions) > 0)
     <div class="flex justify-center">
         <div class="w-full md:w-[360px]">
-            <a wire:navigate href="{{route('quiz.easy')}}">
+            <a wire:navigate href="{{route('quiz.medium')}}">
                 <div
                     class="text-slate-600 text-center w-12 text-sm font-semibold py-1 px-2 border border-slate-500  rounded-sm  hover:bg-slate-800 hover:text-white">
 
@@ -111,10 +107,6 @@
                 </div>
             </a>
 
-
-            {{-- <button wire:click="back"
-                class="px-4 py-2 rounded-lg border border-slate-700 hover:bg-slate-700 hover:text-white focus:outline-none">Back</button>
-            --}}
             <h3 class="text-xl text-blue-600 font-bold mt-6 mb-2">Skor Anda: {{ $score }}</h3>
             @if (count($incorrectQuestions) > 0)
             <h4 class="text-lg font-semibold mb-3">Jawaban salah:</h4>

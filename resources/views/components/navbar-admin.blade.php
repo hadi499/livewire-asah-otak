@@ -4,18 +4,16 @@
       <div class="flex justify-between h-16">
         <!-- Left side: Logo, Home, About -->
         <div class="flex">
-          <a wire:navigate href="/" class="flex items-center space-x-2 text-gray-800 hover:text-gray-900">
-            <img src="{{asset('images/pohadi-black.png')}}" class="w-24 " alt="logo">
+          <a wire:navigate href="/admin" class="flex items-center space-x-2 text-gray-800 hover:text-gray-900">
+            <img src="{{asset('images/admin-blue.png')}}" class="w-24 " alt="logo">
 
           </a>
           <div class="hidden md:flex md:items-center md:ml-6 md:gap-3">
             @auth
             <a wire:navigate href="{{ route('home') }}"
-              class="text-gray-800 dark:text-white hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('home') ? 'border-b-2 border-blue-500' : '' }}">Home</a>
-            @if(Auth::user()->role == 'admin')
-            <a wire:navigate href="{{ route('admin') }}"
-              class="text-gray-800 dark:text-white hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('admin') ? 'border-b-2 border-blue-500' : '' }}">Admin</a>
-            @endif
+              class="text-blue-800 px-3 py-2 rounded-md text-sm font-medium underline underline-offset-2 {{ request()->routeIs('home') ? 'border-b-2 border-blue-500' : '' }}">View
+              site</a>
+
 
 
 
@@ -131,13 +129,10 @@
 
         <a href="{{ route('home') }}"
           class="block hover:bg-blue-200 text-left px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('home') ? ' text-blue-800' : '' }}">Home</a>
-        @if(Auth::user()->role == 'admin')
-        <a href="{{ route('admin') }}"
-          class="block hover:bg-blue-200 text-left px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('admin') ? ' text-blue-800' : '' }}">Admin</a>
-        @endif
         <form action="{{ route('logout') }}" method="POST" class="block w-full">
           @csrf
-          <button type="submit" class="w-full text-left hover:bg-blue-200 px-3 py-2 rounded-md text-base font-medium ">
+          <button type="submit"
+            class="w-full text-left hover:bg-blue-200 px-3 py-2 rounded-md text-base font-medium text-blue-800">
             Logout
           </button>
         </form>

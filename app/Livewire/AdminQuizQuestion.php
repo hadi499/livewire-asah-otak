@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Quiz;
 use Livewire\Component;
 use App\Models\Question;
+use Livewire\Attributes\Layout;
 
 class AdminQuizQuestion extends Component
 {
@@ -58,6 +59,8 @@ class AdminQuizQuestion extends Component
         session()->flash('message', 'Pertanyaan berhasil ditambahkan!');
     }
 
+
+    #[Layout('components.layouts.admin-app')]
     public function render()
     {
         return view('livewire.admin-quiz-question', [

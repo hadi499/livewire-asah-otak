@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Quiz;
 use Livewire\Component;
+use Livewire\Attributes\Layout;
 
 class AdminQuizEdit extends Component
 {
@@ -61,6 +62,8 @@ class AdminQuizEdit extends Component
         return redirect()->route('admin.quiz');
     }
 
+
+    #[Layout('components.layouts.admin-app')]
     public function render()
     {
         return view('livewire.admin-quiz-edit');

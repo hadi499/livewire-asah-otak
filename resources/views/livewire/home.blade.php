@@ -1,12 +1,14 @@
 <div>
     <div class="flex  justify-center mt-8">
-        <div class="w-56 ">
+        <div class="w-[300px]">
 
-            <div>
 
-                <a class="bg-blue-700 px-2 py-2 shadow-lg rounded-sm text-white text-sm font-semibold hover:bg-blue-600"
-                    href="{{route('quiz.easy')}}">Quiz</a>
-            </div>
+            <a wire:navigate href="{{route('quiz.index')}}">
+                <div
+                    class="border border-blue-700 hover:bg-blue-700 hover:text-white  px-2 py-2 shadow-lg rounded-sm text-blue-700 text-sm text-center  font-semibold mb-4">
+                    Quiz
+                </div>
+            </a>
 
 
         </div>

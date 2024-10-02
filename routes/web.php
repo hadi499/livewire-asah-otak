@@ -14,6 +14,9 @@ use App\Livewire\AdminQuizQuestion;
 use App\Livewire\QuestionComponent;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogoutController;
+use App\Livewire\AdminScore;
+use App\Livewire\MediumQuiz;
+use App\Livewire\QuizIndex;
 
 Route::middleware(['auth'])->group(function () {
 
@@ -21,12 +24,15 @@ Route::middleware(['auth'])->group(function () {
   Route::middleware('userAkses:admin')->group(function () {
     Route::get('/admin', AdminIndex::class)->name('admin');
     Route::get('/admin/quiz', AdminQuiz::class)->name('admin.quiz');
+    Route::get('/admin/score', AdminScore::class)->name('admin.score');
     Route::get('/admin/quiz/create', AdminQuizCreate::class)->name('admin.create.quiz');
     Route::get('/admin/quiz/edit/{id}', AdminQuizEdit::class)->name('admin.quiz.edit');
     Route::get('admin/question/create/{quiz}', AdminQuizQuestion::class)->name('admin.question.create');
   });
 
+  Route::get('/quiz', QuizIndex::class)->name('quiz.index');
   Route::get('/quiz/easy', EasyQuiz::class)->name('quiz.easy');
+  Route::get('/quiz/medium', MediumQuiz::class)->name('quiz.medium');
   // Route::get('/quiz/{level}', QuizComponent::class)->name('quiz.level');
   Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 });

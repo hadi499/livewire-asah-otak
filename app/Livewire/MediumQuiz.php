@@ -6,7 +6,7 @@ use App\Models\Quiz;
 use App\Models\Result;
 use Livewire\Component;
 
-class EasyQuiz extends Component
+class MediumQuiz extends Component
 {
     public $title;
     public $quizzes;
@@ -17,33 +17,38 @@ class EasyQuiz extends Component
     public $multiplier = 100;
     public $number_of_questions;
     public $incorrectQuestions = [];
-    public $timeRemaining; // Tambahkan properti untuk menyimpan waktu tersisa
+    public $timeRemaining;
 
     public function back()
     {
-        return redirect('/quiz/easy');
+        return redirect('/quiz');
     }
 
-    public function mount($level = 'Easy')
+    public function mount($level = 'Medium')
     {
-        $this->title = 'Quiz Easy';
+        $this->title = 'Quiz Medium';
         $this->quizzes = Quiz::where('level', $level)->get();
     }
 
-    public function startEasy(Quiz $quiz)
+    public function startMedium(Quiz $quiz)
     {
         $this->quiz = $quiz;
-        $this->questions = $quiz->questions;
         $this->score = 0; // Reset score
         $this->incorrectQuestions = []; // Reset incorrect questions
         $this->title = $quiz->title;
-        $this->number_of_questions = $quiz->number_of_questions;
-        $this->timeRemaining = $quiz->time;
+
+        // Atur jumlah pertanyaan dari kuis
+        $this->number_of_questions = min($quiz->number_of_questions, $quiz->questions->count());
+
+        // Acak dan ambil sejumlah pertanyaan sesuai dengan $this->number_of_questions
+        $this->questions = $quiz->questions->shuffle()->take($this->number_of_questions);
+
+        $this->timeRemaining = $quiz->time; // Set waktu tersisa
     }
 
-    public function submitEasy()
+    public function submitMedium()
     {
-        // Reset score dan pertanyaan yang salah
+        // Reset score and incorrect questions
         $this->score = 0;
         $this->multiplier = 100 / $this->number_of_questions;
         $this->incorrectQuestions = [];
@@ -70,17 +75,18 @@ class EasyQuiz extends Component
 
         $this->score = $this->score * $this->multiplier;
 
-        // Simpan hasil kuis ke dalam database
+        // Save quiz result in the database
         Result::create([
             'quiz_id' => $this->quiz->id,
-            'user_id' => auth()->id(), // Menggunakan user yang sedang login
+            'user_id' => auth()->id(), // Using the currently authenticated user
             'score' => $this->score
         ]);
     }
 
+
     public function render()
     {
-        return view('livewire.easy-quiz', [
+        return view('livewire.medium-quiz', [
             'quizzes' => $this->quizzes,
             'quiz' => $this->quiz,
             'questions' => $this->questions,

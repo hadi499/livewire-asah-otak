@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Quiz;
 use Livewire\Component;
+use Livewire\Attributes\Layout;
 
 class AdminQuiz extends Component
 {
@@ -20,7 +21,7 @@ class AdminQuiz extends Component
         }
     }
 
-
+    #[Layout('components.layouts.admin-app')]
     public function render()
     {
 

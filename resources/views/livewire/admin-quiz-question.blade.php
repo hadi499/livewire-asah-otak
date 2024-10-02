@@ -1,8 +1,8 @@
 <div>
 
 
-    <div class="md:flex md:justify-center mt-8 md:gap-4 p-2">
-        <div class="border p-2 w-full md:w-[500px] rounded-lg shadow-lg bg-slate-100 mb-3">
+    <div class="md:flex md:justify-center mt-8 md:gap-4">
+        <div class="border p-2  w-full md:w-[500px] md:p-6 rounded-lg shadow-lg bg-slate-100 mb-3">
 
 
             <h1 class="text-center text-2xl font-semibold">Form question</h1>
@@ -12,7 +12,7 @@
                 <div>
                     <label for="question_text" class="block text-sm font-medium text-gray-700">Pertanyaan</label>
                     <input type="text" id="question_text" wire:model="question_text"
-                        class="mt-1 block w-2/3 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
                     @error('question_text')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror

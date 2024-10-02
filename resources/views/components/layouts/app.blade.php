@@ -11,6 +11,7 @@
 
 <body>
     <x-navbar />
+    <x-message-success />
     {{ $slot }}
 </body>
 
