@@ -15,7 +15,7 @@
 
             @endif
 
-            <div class="text-xl leading-relaxed  "> {{ $page->english }}
+            <div class="text-xl  "> {{ $page->english}}
                 <span class="hover:cursor-pointer text-sm text-blue-600 mb-0 "
                     @click="showIndonesian = !showIndonesian">
                     terjemahkan</span>
