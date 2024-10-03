@@ -4,8 +4,10 @@ namespace App\Livewire;
 
 use App\Models\Result;
 use Livewire\Component;
+use Livewire\Attributes\Title;
 use Livewire\Attributes\Layout;
 
+#[Title('score')]
 class AdminScore extends Component
 {
 

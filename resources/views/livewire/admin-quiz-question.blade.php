@@ -1,8 +1,8 @@
-<div>
+<div class="flex flex-col mt-10 justify-center items-center p-2">
 
 
-    <div class="md:flex md:justify-center mt-8 md:gap-4">
-        <div class="border p-2  w-full md:w-[500px] md:p-6 rounded-lg shadow-lg bg-slate-50 mb-3">
+    <div class="flex w-full flex-col sm:flex-col md:flex-row md:justify-center items-start gap-8">
+        <div class="border p-2  w-full md:w-[500px] min-h-[500px] md:p-6 rounded-lg shadow-lg bg-slate-50 mb-3">
 
 
 
@@ -82,13 +82,16 @@
 
         </div>
 
-        <div>
+        <div class="w-full md:w-[400px]  min-h-[500px]">
+            <h3 class="mb-3 text-sm font-semibold">{{ $totalQuestions }} Questions</h3>
+
 
             @foreach($questions as $question)
 
-            <div id="wrap" class="relative flex mb-3 bg-slate-100 rounded-sm gap-2 w-1/2 md:w-full">
+            <div id="wrap" class="relative flex  mb-3 bg-slate-100 rounded-sm gap-2 w-1/2 ">
 
-                <div class="text-center p-2 mr-8 ">
+
+                <div class="text-center p-2 mr-3 ">
                     <a href="{{route('quiz.question.edit', $question->id)}}" class="hover:text-blue-700">
                         {{
                         $question->question_text
@@ -99,8 +102,24 @@
 
 
                 </div>
+
+                <button wire:click="deleteQuestion({{$question->id}})" wire:confirm="are you sure?"
+                    class="absolute top-1 right-1 text-red-500 transform transition-transform duration-300 hover:rotate-90 ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-x ">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M18 6l-12 12" />
+                        <path d="M6 6l12 12" />
+                    </svg>
+                </button>
+
+
+
+
+                {{--
                 <livewire:admin-question-destroy :question="$question"
-                    wire:key="question-destroy-{{ $question->id }}" />
+                    wire:key="question-destroy-{{ $question->id }}" /> --}}
 
 
             </div>

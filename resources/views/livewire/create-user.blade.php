@@ -1,6 +1,6 @@
 <div class="max-w-lg mx-auto mt-10">
     <form wire:submit.prevent="register" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 border">
-        <h2 class="text-2xl text-center font-bold mb-4">Register</h2>
+        <h2 class="text-xl text-center font-bold mb-4">Create New User</h2>
 
         <div class="mb-4">
             <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>

@@ -2,8 +2,9 @@
 
 namespace App\Livewire;
 
-use App\Models\Question;
 use Livewire\Component;
+use App\Models\Question;
+use Livewire\Attributes\On;
 
 class AdminQuestionDestroy extends Component
 {
@@ -21,6 +22,7 @@ class AdminQuestionDestroy extends Component
         $this->dispatch('dispatch-question-delete')->to(AdminQuizQuestion::class);
     }
 
+    #[On('dispatch-question-list')]
     public function render()
     {
         return view('livewire.admin-question-destroy');

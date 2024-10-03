@@ -6,7 +6,9 @@ use App\Models\Question;
 use App\Models\Quiz;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 
+#[Title('add quiz')]
 class AdminQuizCreate extends Component
 {
     public $title;

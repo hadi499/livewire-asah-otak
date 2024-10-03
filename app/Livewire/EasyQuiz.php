@@ -5,7 +5,9 @@ namespace App\Livewire;
 use App\Models\Quiz;
 use App\Models\Result;
 use Livewire\Component;
+use Livewire\Attributes\Title;
 
+#[Title('easy quiz')]
 class EasyQuiz extends Component
 {
     public $title;

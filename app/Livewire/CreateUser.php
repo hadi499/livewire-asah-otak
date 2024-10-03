@@ -6,7 +6,9 @@ use App\Models\User;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 use Illuminate\Support\Facades\Hash;
+use Livewire\Attributes\Title;
 
+#[Title('create user')]
 class CreateUser extends Component
 {
 

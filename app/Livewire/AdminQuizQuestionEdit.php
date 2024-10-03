@@ -5,7 +5,9 @@ namespace App\Livewire;
 use App\Models\Question;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 
+#[Title('edit question')]
 class AdminQuizQuestionEdit extends Component
 {
     public $question;

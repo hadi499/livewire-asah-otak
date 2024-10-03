@@ -5,7 +5,9 @@ namespace App\Livewire;
 use App\Models\Quiz;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 
+#[Title('admin quiz')]
 class AdminQuiz extends Component
 {
 

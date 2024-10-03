@@ -10,7 +10,7 @@
                     <path d="M12 5l0 14" />
                     <path d="M5 12l14 0" />
                 </svg>
-                <span class="ml-1">Users</span>
+                <span class="ml-1">User</span>
             </a>
             <a wire:navigate href="{{route('admin')}}">
                 <div
