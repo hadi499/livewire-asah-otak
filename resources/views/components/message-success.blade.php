@@ -5,7 +5,7 @@
     role="alert">
     {{ session('success') }}
     <button type="button" class="absolute top-0 bottom-0 right-0 px-4 py-3" @click="show = false" aria-label="Close">
-      <span class="text-green-700">&times;</span>
+      <span class="text-white">&times;</span>
     </button>
   </div>
   @endif

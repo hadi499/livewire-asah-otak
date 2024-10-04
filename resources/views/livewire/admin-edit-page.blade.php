@@ -87,10 +87,7 @@
                   const editorData = editor.getData();
   
                   // Kirim data ke Livewire atau backend
-                  @this.set('english', editorData).then(() => {
-                      // Setelah submit, kosongkan editor
-                      editor.setData('');
-                  });
+                  @this.set('english', editorData)
               });
                   
               })
@@ -105,9 +102,7 @@
                   editor.model.document.on('change:data', () => {
                   const editorData = editor.getData();
                 //   console.log(editorData);
-                  
-                  // Update Livewire atau backend ketika ada perubahan data,
-                  // tapi tidak melakukan reset di sini.
+           
                   @this.set('indonesian', editorData);
               });
   
@@ -117,10 +112,8 @@
                   const editorData = editor.getData();
   
                   // Kirim data ke Livewire atau backend
-                  @this.set('indonesian', editorData).then(() => {
-                      // Setelah submit, kosongkan editor
-                      editor.setData('');
-                  });
+                  @this.set('indonesian', editorData)
+               
               });
                   
               })

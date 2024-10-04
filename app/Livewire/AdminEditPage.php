@@ -60,8 +60,8 @@ class AdminEditPage extends Component
         ]);
 
         // Feedback sukses
-        session()->flash('success', 'Page successfully updated!');
-        return redirect()->to('/admin/pages/create/' . $this->book_id);
+        // session()->flash('success', 'Page successfully updated!');
+        return redirect()->to('/admin/pages/create/' . $this->book_id)->with('success', 'Page successfully updated!');
     }
 
     #[Layout('components.layouts.admin-app')]
