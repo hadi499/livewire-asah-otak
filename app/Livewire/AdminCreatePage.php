@@ -7,7 +7,9 @@ use App\Models\Page;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 
+#[Title('page create')]
 class AdminCreatePage extends Component
 {
     use WithFileUploads;

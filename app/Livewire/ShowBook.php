@@ -3,8 +3,10 @@
 namespace App\Livewire;
 
 use App\Models\Book;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
+#[Title('page view')]
 class ShowBook extends Component
 {
     public $book;

@@ -38,20 +38,18 @@
             @endif
         </div>
 
-        <div class="mb-4">
-            <label for="english" class="block text-sm font-medium text-gray-700">English Content</label>
+        <div class="mb-4" wire:ignore>
+            <label for="english" class="block text-sm font-medium text-gray-700">English</label>
 
-            <textarea id="english" rows="4" cols="50" wire:model="english"
-                class="mt-1 block w-full border p-2"></textarea>
+            <textarea id="mycontent" rows="4" cols="50" class="mt-1 block w-full border p-2">{{$english}}</textarea>
             @error('english') <span class="text-red-600">{{ $message }}</span> @enderror
         </div>
 
-        <div class="mb-4">
-            <label for="indonesian" class="block text-sm font-medium text-gray-700">Indonesian Content</label>
+        <div class="mb-4" wire:ignore>
+            <label for="indonesian" class="block text-sm font-medium text-gray-700">Indonesian</label>
 
 
-            <textarea id="indonesian" wire:model="indonesian" class="mt-1 block w-full border p-2" rows="4"
-                cols="50"></textarea>
+            <textarea id="mycontent2" class="mt-1 block w-full border p-2" rows="4" cols="50">{{$indonesian}}</textarea>
             @error('indonesian') <span class="text-red-600">{{ $message }}</span> @enderror
         </div>
 
@@ -60,10 +58,79 @@
                 class="py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-slate-600 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 Back
             </a>
-            <button type="submit"
+            <button type="submit" id="submitButton"
                 class="py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 Save
             </button>
         </div>
     </form>
 </div>
+
+
+@script
+<script>
+    ClassicEditor
+              .create(document.querySelector('#mycontent'))
+              .then(editor => {
+                  editor.model.document.on('change:data', () => {
+                  const editorData = editor.getData();
+                //   console.log(editorData);
+                  
+                  // Update Livewire atau backend ketika ada perubahan data,
+                  // tapi tidak melakukan reset di sini.
+                  @this.set('english', editorData);
+              });
+  
+              // Tambahkan event listener pada tombol submit
+              document.querySelector('#submitButton').addEventListener('click', () => {
+                  // Ambil data dari editor
+                  const editorData = editor.getData();
+  
+                  // Kirim data ke Livewire atau backend
+                  @this.set('english', editorData).then(() => {
+                      // Setelah submit, kosongkan editor
+                      editor.setData('');
+                  });
+              });
+                  
+              })
+              .catch(error => {
+                  console.error(error);
+              });
+  
+  
+              ClassicEditor
+              .create(document.querySelector('#mycontent2'))
+              .then(editor => {
+                  editor.model.document.on('change:data', () => {
+                  const editorData = editor.getData();
+                //   console.log(editorData);
+                  
+                  // Update Livewire atau backend ketika ada perubahan data,
+                  // tapi tidak melakukan reset di sini.
+                  @this.set('indonesian', editorData);
+              });
+  
+              // Tambahkan event listener pada tombol submit
+              document.querySelector('#submitButton').addEventListener('click', () => {
+                  // Ambil data dari editor
+                  const editorData = editor.getData();
+  
+                  // Kirim data ke Livewire atau backend
+                  @this.set('indonesian', editorData).then(() => {
+                      // Setelah submit, kosongkan editor
+                      editor.setData('');
+                  });
+              });
+                  
+              })
+              .catch(error => {
+                  console.error(error);
+              });
+             
+  
+  
+  
+</script>
+
+@endscript
