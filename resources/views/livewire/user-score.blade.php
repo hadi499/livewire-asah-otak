@@ -1,16 +1,8 @@
 <div class="overflow-auto p-2  flex justify-center mt-6">
 
     <div class="w-full  md:w-[800px]">
-        <div class="md:flex md:justify-between mb-5">
-
-            <button wire:click="deleteResultAll()" wire:confirm="Are sure to delete all?"
-                class="text-center text-sm font-semibold text-red-600 w-full sm:w-[100px] py-2 md:py-1 px-2 border border-red-500 rounded hover:text-white hover:bg-red-500 mb-3">
-                Clear scores
-            </button>
-
-
-
-            <a wire:navigate href="{{route('admin')}}">
+        <div class="md:flex md:justify-end mb-5">
+            <a wire:navigate href="{{route('home')}}">
                 <div
                     class="text-slate-600 text-center text-sm font-semibold py-2 md:py-1 px-2 border border-slate-500  rounded-sm  hover:bg-slate-800 hover:text-white">
 
@@ -33,7 +25,7 @@
                 @foreach($results as $result)
                 <tr class="hover:bg-green-50">
                     <td class="py-3 px-4 border-b">{{$result->quiz->title}}</td>
-                    <td class="py-3 pl-6 border-b">{{$result->quiz->number_of_questions}}</td>
+                    <td class="py-3 px-4 text-center border-b">{{$result->quiz->number_of_questions}}</td>
                     <td class="py-3 px-4 border-b">{{$result->user->name}}</td>
                     <td class="py-3 px-4 border-b">{{$result->score}}</td>
                     <td class="py-3 px-4 border-b">{{

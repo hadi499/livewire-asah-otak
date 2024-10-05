@@ -25,7 +25,9 @@ use App\Livewire\QuestionComponent;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\AdminQuizQuestionEdit;
 use App\Http\Controllers\LogoutController;
+use App\Livewire\AdminBookEdit;
 use App\Livewire\AdminEditPage;
+use App\Livewire\UserScore;
 
 Route::middleware(['auth'])->group(function () {
 
@@ -37,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/users', AdminUserIndex::class)->name('admin.users');
     Route::get('/admin/books', AdminBook::class)->name('admin.books');
     Route::get('/admin/books/create', AdminBookCreate::class)->name('admin.books.create');
+    Route::get('/admin/books/{book}', AdminBookEdit::class)->name('admin.books.edit');
     Route::get('/admin/pages/create/{book}', AdminCreatePage::class)->name('admin.pages.create');
     Route::get('/admin/pages/edit/{pageId}', AdminEditPage::class)->name('admin.pages.edit');
     Route::get('/admin/user/register', CreateUser::class)->name('admin.user.register');
@@ -48,6 +51,7 @@ Route::middleware(['auth'])->group(function () {
   });
 
   Route::get('/quiz', QuizIndex::class)->name('quiz.index');
+  Route::get('/score', UserScore::class)->name('users.score');
   Route::get('/books', Books::class)->name('books.index');
   Route::get('/books/{book}', ShowBook::class)->name('books.show');
   Route::get('/quiz/easy', EasyQuiz::class)->name('quiz.easy');

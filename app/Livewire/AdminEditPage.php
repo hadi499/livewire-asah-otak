@@ -7,6 +7,7 @@ use App\Models\Page;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Layout;
+use Illuminate\Support\Facades\Storage;
 
 class AdminEditPage extends Component
 {
@@ -42,8 +43,12 @@ class AdminEditPage extends Component
         // Validasi input
         $this->validate();
 
+
         // Jika ada gambar baru, upload dan update path-nya
         if ($this->newImage) {
+            if ($this->image && Storage::disk('public')->exists($this->image)) {
+                Storage::disk('public')->delete($this->image);
+            }
             $imagePath = $this->newImage->store('images');
         } else {
             // Jika tidak ada gambar baru, gunakan gambar yang sudah ada

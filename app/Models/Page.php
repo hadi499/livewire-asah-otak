@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Page extends Model
@@ -19,5 +20,22 @@ class Page extends Model
     public function getExcerpt()
     {
         return Str::limit(strip_tags($this->english), 25);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($page) {
+            if ($page->image) {
+                Storage::delete($page->image);
+            }
+        });
+
+        static::updating(function ($page) {
+            if ($page->isDirty('image') && ($page->getOriginal('image') !== null)) {
+                Storage::delete($page->getOriginal('image'));
+            }
+        });
     }
 }

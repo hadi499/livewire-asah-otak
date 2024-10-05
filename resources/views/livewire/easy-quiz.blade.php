@@ -1,7 +1,7 @@
 <div class="max-w-2xl mx-auto px-2 mt-6">
 
 
-    <h1 class="text-xl font-bold mb-6 mt-3 text-center">{{ $title }}</h1>
+    <h1 class="text-xl font-bold mb-6 mt-8 text-center">{{ $title }}</h1>
 
     <!-- Timer -->
 
@@ -45,8 +45,8 @@
 
 
 
-
-    <div id="timer" class="fixed top-[80px] right-[0px] lg:right-[150px]  w-24 text-xl font-semibold text-red-600 "
+    <div id="timer"
+        class="fixed  top-[70px] right-0 md:right-0  lg:right-[300px] w-24 text-xl font-semibold text-red-600 "
         wire:ignore x-data="{ timeRemaining: @entangle('timeRemaining'), interval: null }" x-init="
             interval = setInterval(() => {
                 if (timeRemaining > 0) {
@@ -58,7 +58,10 @@
             }, 1000);
         " x-text="Math.floor(timeRemaining / 60) + ':' + ('0' + (timeRemaining % 60)).slice(-2)">
     </div>
+
     <form wire:submit.prevent="submitEasy" class="border p-4 mb-6">
+
+
         <div class="flex justify-evenly gap-2 flex-wrap">
             @foreach($questions as $question)
             <div class="w-[200px] border">

@@ -3,7 +3,7 @@
 
 
         <div class="mb-5">
-            <a wire:navigate href="{{route('home')}}">
+            <a wire:navigate href="{{route('books.index')}}">
                 <div
                     class=" border-slate-500 border  text-center hover:bg-slate-800 hover:text-white w-20 py-1 shadow-lg rounded-sm  text-slate-700 text-sm font-semibold ">
                     Back

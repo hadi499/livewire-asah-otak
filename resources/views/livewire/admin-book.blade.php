@@ -1,5 +1,5 @@
 <div class="flex justify-center mt-6 p-2">
-    <div class="w-[300px]">
+    <div class="w-[800px]">
 
         <div class="mb-6 flex justify-between">
 
@@ -31,20 +31,35 @@
                 </div>
             </a>
         </div>
-        @foreach ($books as $book)
-        <div class="mb-3 mt-6 ">
-            <a href="{{route('admin.pages.create', $book->id)}}">
-
-                <div
-                    class="border border-blue-700 hover:bg-blue-700 hover:text-white  px-2 py-2 shadow-lg rounded-sm text-blue-700 text-sm text-center  font-semibold mb-4">
-                    {{$book->title}}
-                </div>
 
 
-            </a>
+
+        <div class="flex flex-row flex-wrap gap-3">
+
+            @foreach ($books as $book)
+
+
+            <div class="flex flex-col p-2 border border-blue-700 shadow-md w-[250px] mb-2">
+                <h1 class="text-center mb-2 text-sm font-semibold"> {{$book->title}}</h1>
+                <a href="{{route('admin.pages.create', $book->id)}}" class="border border-blue-700 px-2 py-2 
+                        rounded-sm text-blue-800 hover:bg-blue-50 text-sm text-center font-semibold mb-1">
+                    Pages
+                </a>
+                <a href="{{route('admin.books.edit', $book->id)}}" class="border border-green-700 hover:bg-green-50 px-2 py-2 
+                        rounded-sm text-green-800 text-sm text-center font-semibold mb-1">Edit</a>
+                <button wire:click="deleteBook({{$book->id}})" wire:confirm="Are you sure?" class="border border-red-700 hover:bg-red-50 px-2 py-2 
+                        rounded-sm text-red-700 text-sm text-center font-semibold mb-1">
+                    Delete
+                </button>
+            </div>
+
+
+            @endforeach
+
+
 
         </div>
-        @endforeach
+
 
 
 

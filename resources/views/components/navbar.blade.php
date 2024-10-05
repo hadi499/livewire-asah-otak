@@ -12,6 +12,8 @@
             @auth
             <a wire:navigate href="{{ route('home') }}"
               class="text-gray-800 dark:text-white hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('home') ? 'border-b-2 border-blue-500' : '' }}">Home</a>
+            <a wire:navigate href="{{ route('users.score') }}"
+              class="text-gray-800 dark:text-white hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('users.score') ? 'border-b-2 border-blue-500' : '' }}">Score</a>
             @if(Auth::user()->role == 'admin')
             <a wire:navigate href="{{ route('admin') }}"
               class="text-gray-800 dark:text-white hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('admin') ? 'border-b-2 border-blue-500' : '' }}">Admin</a>
@@ -130,6 +132,8 @@
 
         <a href="{{ route('home') }}"
           class="block hover:bg-blue-200 text-left px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('home') ? ' text-blue-800' : '' }}">Home</a>
+        <a href="{{ route('users.score') }}"
+          class="block hover:bg-blue-200 text-left px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('users.score') ? ' text-blue-800' : '' }}">Score</a>
         @if(Auth::user()->role == 'admin')
         <a href="{{ route('admin') }}"
           class="block hover:bg-blue-200 text-left px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('admin') ? ' text-blue-800' : '' }}">Admin</a>
